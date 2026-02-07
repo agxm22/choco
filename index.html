@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Like Chocolate 🍫</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Chocolates container removed scroll indicator -->
+    <div class="chocolates-container" id="chocolatesContainer"></div>
+    
+    <!-- Main content -->
+    <div class="page-wrapper">
+        <!-- Hero Section with Unwrapping Chocolate -->
+        <section class="hero-section" id="heroSection">
+            <div class="chocolate-glow chocolate-glow-left"></div>
+            <div class="chocolate-glow chocolate-glow-right"></div>
+            
+            <div class="hero-content">
+                <h1 class="main-title">Happy Chocolate Day!</h1>
+                <p class="subtitle">You're sweeter than any chocolate 🍫</p>
+                
+                <!-- Interactive Cadbury Bubbly Unwrapping Animation -->
+                <div class="chocolate-wrapper" id="chocolateWrapper">
+                    <!-- Single Wrapper that peels from top -->
+                    <div class="wrapper-single" id="wrapperSingle">
+                        <!-- Add your wrapper image here -->
+                        <img src="choco.png" alt="Wrapper" class="wrapper-photo">
+                        <!-- Placeholder if no image -->
+                        <div class="wrapper-placeholder">
+                            
+                          
+                        </div>
+                        <div class="wrapper-shine"></div>
+                        
+                        <!-- Peeling edge effect -->
+                        <div class="peel-edge"></div>
+                    </div>
+                    
+                    <!-- Chocolate Bar (Brown with bubbles) -->
+                    <div class="chocolate-bar" id="chocolateBar">
+                        <div class="chocolate-grid">
+                            <!-- Bubbles pattern -->
+                            <div class="bubble-row">
+                                <div class="bubble"></div>
+                                <div class="bubble"></div>
+                                <div class="bubble"></div>
+                                <div class="bubble"></div>
+                            </div>
+                            <div class="bubble-row">
+                                <div class="bubble"></div>
+                                <div class="bubble"></div>
+                                <div class="bubble"></div>
+                                <div class="bubble"></div>
+                            </div>
+                            <div class="bubble-row">
+                                <div class="bubble"></div>
+                                <div class="bubble"></div>
+                                <div class="bubble"></div>
+                                <div class="bubble"></div>
+                            </div>
+                            <div class="bubble-row">
+                                <div class="bubble"></div>
+                                <div class="bubble"></div>
+                                <div class="bubble"></div>
+                                <div class="bubble"></div>
+                            </div>
+                        </div>
+                        <div class="chocolate-shine"></div>
+                    </div>
+                    
+                    <!-- Unwrapped Message -->
+                    <div class="unwrapped-message" id="unwrappedMessage">
+                        <p>Just like unwrapping this chocolate...</p>
+                        <p class="highlight">You bring sweetness to my life! 💕</p>
+                    </div>
+                </div>
+                
+                <!-- Unwrap Button -->
+                <button class="unwrap-button" id="unwrapButton">
+                    <span>🍫 Click to Unwrap 🍫</span>
+                </button>
+                
+                <p class="date">Chocolate Day • February 9, 2026</p>
+            </div>
+        </section>
+
+        <!-- Sweet Message Section -->
+        <section class="message-section">
+            <div class="message-box">
+                <h2 class="section-title">You're My Favorite Flavor</h2>
+                <p class="love-message">
+                    Just like Cadbury Bubbly is your favorite chocolate, you are my favorite person. 
+                    Every moment with you is like unwrapping a sweet surprise - full of joy, 
+                    excitement, and pure happiness.
+                </p>
+                <p class="love-message">
+                    Your smile melts my heart faster than chocolate melts in the sun. 
+                    Your laughter is sweeter than the sweetest treat. 
+                    And your love? It's the most precious thing I could ever ask for.
+                </p>
+                <p class="love-message highlight-text">
+                    You make life deliciously beautiful! 🍫💕
+                </p>
+                <div class="signature">Forever your chocoholic 🍫</div>
+            </div>
+        </section>
+
+      
+
+        <!-- Interactive Button -->
+        <section class="interactive-section">
+            <button class="love-button" id="chocolateButton">
+                <span>Click for Something Sweet</span>
+            </button>
+            <div class="special-message" id="specialMessage">
+                <p>Life without you would be like chocolate without sweetness - simply incomplete! You're my favorite treat, today and always! 🍫💕</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with lots of love</p>
+            <p class="footer-date">Chocolate Day 2026</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

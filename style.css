@@ -1,0 +1,1099 @@
+/* ========================================
+   CSS Variables & Root Styles
+   ======================================== */
+:root {
+    --purple: #6b3fa0;
+    --purple-dark: #4a2871;
+    --purple-light: #9b6dd6;
+    --chocolate: #3d2817;
+    --chocolate-light: #5c4033;
+    --chocolate-dark: #2d1e13;
+    --gold: #ffd700;
+    --cream: #fff8f0;
+    --pink: #ff69b4;
+    --text-dark: #2d1e13;
+    --shadow: rgba(61, 40, 23, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #fff8f0 0%, #ffe8d6 100%);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ========================================
+   Falling Chocolates Background
+   ======================================== */
+.chocolates-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.falling-chocolate {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0.7;
+    animation: fall linear infinite;
+    top: -50px;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   Page Wrapper
+   ======================================== */
+.page-wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ========================================
+   Unwrap Button
+   ======================================== */
+.unwrap-button {
+    margin-top: 50px;
+    background: linear-gradient(135deg, var(--purple), var(--chocolate));
+    color: white;
+    border: none;
+    padding: 20px 50px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(107, 63, 160, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: buttonPulse 2s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(107, 63, 160, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 15px 40px rgba(107, 63, 160, 0.6);
+    }
+}
+
+.unwrap-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.unwrap-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.unwrap-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 40px rgba(107, 63, 160, 0.6);
+    animation: none;
+}
+
+.unwrap-button:active {
+    transform: scale(0.95);
+}
+
+.unwrap-button span {
+    position: relative;
+    z-index: 1;
+}
+
+.unwrap-button.unwrapping {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.unwrap-button.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0);
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 60px 20px;
+}
+
+.chocolate-glow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--purple), transparent);
+    border-radius: 50%;
+    opacity: 0.15;
+    filter: blur(60px);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.chocolate-glow-left {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.chocolate-glow-right {
+    top: 15%;
+    right: 10%;
+    animation-delay: 2s;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.15; }
+    50% { transform: scale(1.3); opacity: 0.25; }
+}
+
+.hero-content {
+    animation: fadeInUp 1.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-title {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 400;
+    background: linear-gradient(135deg, var(--purple) 0%, var(--chocolate) 50%, var(--pink) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--chocolate);
+    margin-bottom: 60px;
+    font-weight: 500;
+}
+
+.date {
+    font-size: 1rem;
+    color: var(--chocolate);
+    margin-top: 60px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* ========================================
+   Interactive Cadbury Bubbly Chocolate
+   ======================================== */
+.chocolate-wrapper {
+    position: relative;
+    width: 320px;
+    height: 400px;
+    margin: 0 auto;
+    perspective: 1500px;
+}
+
+/* Single Wrapper that peels from top */
+.wrapper-single {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(107, 63, 160, 0.4);
+    transform-origin: top center;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 10;
+}
+
+/* Photo in wrapper */
+.wrapper-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    z-index: 1;
+}
+
+/* Placeholder when no photo */
+.wrapper-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+.wrapper-placeholder span {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.wrapper-placeholder small {
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+.wrapper-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shine 3s ease-in-out infinite;
+    z-index: 3;
+}
+
+@keyframes shine {
+    0%, 100% { left: -100%; }
+    50% { left: 100%; }
+}
+
+/* Peeling edge effect at bottom */
+.peel-edge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--purple-light));
+    border-radius: 0 0 15px 15px;
+    z-index: 4;
+    transition: all 0.6s ease;
+}
+
+.peel-edge::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--purple-dark),
+        var(--purple-dark) 15px,
+        var(--purple) 15px,
+        var(--purple) 30px
+    );
+    clip-path: polygon(
+        0% 100%, 3% 0%, 6% 100%, 9% 0%, 12% 100%, 15% 0%, 18% 100%, 21% 0%, 
+        24% 100%, 27% 0%, 30% 100%, 33% 0%, 36% 100%, 39% 0%, 42% 100%, 45% 0%,
+        48% 100%, 51% 0%, 54% 100%, 57% 0%, 60% 100%, 63% 0%, 66% 100%, 69% 0%,
+        72% 100%, 75% 0%, 78% 100%, 81% 0%, 84% 100%, 87% 0%, 90% 100%, 93% 0%,
+        96% 100%, 99% 0%, 100% 100%
+    );
+}
+
+/* Peeling/Unwrapping states based on scroll */
+.wrapper-single.peel-10 {
+    transform: rotateX(-5deg) translateY(-10px);
+}
+
+.wrapper-single.peel-10 .peel-edge {
+    transform: scaleY(1.2);
+}
+
+.wrapper-single.peel-30 {
+    transform: rotateX(-15deg) translateY(-30px);
+}
+
+.wrapper-single.peel-30 .peel-edge {
+    transform: scaleY(1.5);
+}
+
+.wrapper-single.peel-50 {
+    transform: rotateX(-30deg) translateY(-60px);
+}
+
+.wrapper-single.peel-50 .peel-edge {
+    transform: scaleY(2);
+}
+
+.wrapper-single.peel-70 {
+    transform: rotateX(-50deg) translateY(-100px);
+}
+
+.wrapper-single.peel-70 .peel-edge {
+    transform: scaleY(2.5);
+}
+
+.wrapper-single.peel-90 {
+    transform: rotateX(-75deg) translateY(-150px);
+}
+
+.wrapper-single.peel-90 .peel-edge {
+    transform: scaleY(3);
+}
+
+.wrapper-single.peel-100 {
+    transform: rotateX(-90deg) translateY(-200px);
+    opacity: 0;
+}
+
+/* Chocolate Bar */
+.chocolate-bar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 240px;
+    height: 320px;
+    background: linear-gradient(135deg, var(--chocolate-light) 0%, var(--chocolate) 50%, var(--chocolate-dark) 100%);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 15px 40px rgba(61, 40, 23, 0.4);
+    opacity: 0;
+    transition: all 0.8s ease;
+    z-index: 5;
+}
+
+.chocolate-bar.revealed {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.chocolate-grid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.bubble-row {
+    display: flex;
+    gap: 8px;
+    flex: 1;
+}
+
+.bubble {
+    flex: 1;
+    background: radial-gradient(circle at 30% 30%, var(--chocolate-light), var(--chocolate-dark));
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 
+        inset 2px 2px 5px rgba(0, 0, 0, 0.3),
+        inset -2px -2px 5px rgba(255, 255, 255, 0.1);
+    animation: bubblePop 0.6s ease-out both;
+}
+
+.bubble::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    width: 40%;
+    height: 40%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+    border-radius: 50%;
+}
+
+@keyframes bubblePop {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.bubble-row:nth-child(1) .bubble { animation-delay: 0.1s; }
+.bubble-row:nth-child(2) .bubble { animation-delay: 0.2s; }
+.bubble-row:nth-child(3) .bubble { animation-delay: 0.3s; }
+.bubble-row:nth-child(4) .bubble { animation-delay: 0.4s; }
+
+.chocolate-shine {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 60px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+/* Unwrapped Message */
+.unwrapped-message {
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.8s ease 0.5s;
+    pointer-events: none;
+}
+
+.unwrapped-message.show {
+    opacity: 1;
+}
+
+.unwrapped-message p {
+    font-size: 1.1rem;
+    color: var(--chocolate);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.unwrapped-message .highlight {
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ========================================
+   Message Section
+   ======================================== */
+.message-section {
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.message-box {
+    background: white;
+    padding: 60px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px var(--shadow);
+    border: 2px solid #f4d9c6;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1s ease-out;
+}
+
+.message-box::before {
+    content: '🍫';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 3rem;
+    opacity: 0.1;
+}
+
+.message-box::after {
+    content: '🍫';
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 3rem;
+    opacity: 0.1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section-title {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2rem, 5vw, 3rem);
+    background: linear-gradient(135deg, var(--purple), var(--chocolate));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.love-message {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--text-dark);
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+.highlight-text {
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.signature {
+    text-align: right;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, var(--purple), var(--chocolate));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 40px;
+}
+
+/* ========================================
+   Photo Gallery Section
+   ======================================== */
+.gallery-section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.photo-container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+.photo-featured {
+    width: 100%;
+    animation: fadeInScale 0.8s ease-out both;
+}
+
+.photo-featured .photo-frame {
+    aspect-ratio: 4/5;
+    max-height: 500px;
+    margin: 0 auto;
+}
+
+.photo-side-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+}
+
+.photo-side {
+    animation: fadeInScale 0.8s ease-out both;
+}
+
+.photo-side:nth-child(1) { animation-delay: 0.2s; }
+.photo-side:nth-child(2) { animation-delay: 0.3s; }
+
+.photo-side .photo-frame {
+    aspect-ratio: 1/1;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.photo-card {
+    width: 100%;
+}
+
+.photo-frame {
+    position: relative;
+    background: white;
+    padding: 12px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px var(--shadow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+.photo-frame:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(107, 63, 160, 0.3);
+}
+
+.photo-frame::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(107, 63, 160, 0.1), rgba(255, 105, 180, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: 10px;
+}
+
+.photo-frame:hover::after {
+    opacity: 1;
+}
+
+.gallery-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: none;
+}
+
+.photo-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--cream) 0%, #ffe8d6 100%);
+    border: 2px dashed #f4d9c6;
+    border-radius: 10px;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.photo-featured .photo-placeholder span {
+    display: block;
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, var(--purple), var(--chocolate));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.photo-side .photo-placeholder span {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.photo-placeholder small {
+    color: var(--text-dark);
+    font-size: 0.85rem;
+    display: block;
+    opacity: 0.7;
+}
+
+.photo-caption {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.photo-featured .photo-caption {
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--purple), var(--chocolate));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 15px;
+}
+
+/* ========================================
+   Reasons Section
+   ======================================== */
+.reasons-section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.reason-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 6px 20px var(--shadow);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.reason-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--purple);
+    box-shadow: 0 12px 30px rgba(107, 63, 160, 0.3);
+}
+
+.reason-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.reason-card h3 {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, var(--purple), var(--chocolate));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.reason-card p {
+    color: var(--text-dark);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* ========================================
+   Interactive Section
+   ======================================== */
+.interactive-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.love-button {
+    background: linear-gradient(135deg, var(--purple), var(--chocolate));
+    color: white;
+    border: none;
+    padding: 20px 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(107, 63, 160, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.love-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.love-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.love-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(107, 63, 160, 0.4);
+}
+
+.love-button span {
+    position: relative;
+    z-index: 1;
+}
+
+.special-message {
+    max-width: 600px;
+    margin: 40px auto 0;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px var(--shadow);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.5s ease;
+    pointer-events: none;
+    border: 2px solid #f4d9c6;
+}
+
+.special-message.show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.special-message p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+.footer {
+    text-align: center;
+    padding: 60px 20px 40px;
+    color: var(--chocolate);
+    opacity: 0.8;
+}
+
+.footer p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.footer-date {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    letter-spacing: 2px;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+@media (min-width: 600px) {
+    .photo-container {
+        gap: 25px;
+    }
+    
+    .photo-side-grid {
+        gap: 20px;
+    }
+    
+    .photo-frame {
+        padding: 15px;
+    }
+    
+    .photo-featured .photo-frame {
+        max-width: 450px;
+    }
+}
+
+@media (min-width: 900px) {
+    .photo-container {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 30px;
+    }
+    
+    .photo-featured {
+        flex: 1.2;
+        max-width: 500px;
+    }
+    
+    .photo-side-grid {
+        flex: 1;
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .photo-side .photo-frame {
+        aspect-ratio: 4/5;
+    }
+    
+    .gallery-section {
+        padding: 80px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .reasons-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .message-box {
+        padding: 40px 25px;
+    }
+    
+    .chocolate-wrapper {
+        transform: scale(0.85);
+    }
+    
+    .love-message {
+        text-align: left;
+        font-size: 1rem;
+    }
+    
+    .hero-section {
+        min-height: 90vh;
+        padding: 40px 20px;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .reason-card {
+        padding: 30px 25px;
+    }
+    
+    .love-button {
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    .unwrap-button {
+        width: 100%;
+        max-width: 320px;
+        padding: 18px 40px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .chocolate-wrapper {
+        transform: scale(0.7);
+    }
+    
+    .love-button {
+        padding: 15px 35px;
+        font-size: 1rem;
+    }
+    
+    .unwrap-button {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+        max-width: 280px;
+    }
+    
+    .message-box {
+        padding: 30px 20px;
+    }
+    
+    .love-message {
+        font-size: 0.95rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .photo-side-grid {
+        gap: 12px;
+    }
+    
+    .photo-frame {
+        padding: 10px;
+    }
+    
+    .photo-caption {
+        font-size: 0.85rem;
+        margin-top: 10px;
+    }
+    
+    .reason-card {
+        padding: 25px 20px;
+    }
+    
+    .reason-icon {
+        font-size: 2.5rem;
+    }
+    
+    .unwrapped-message p {
+        font-size: 0.95rem;
+    }
+    
+    .unwrapped-message .highlight {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero-section {
+        min-height: auto;
+        padding: 30px 20px;
+    }
+    
+    .chocolate-wrapper {
+        transform: scale(0.6);
+    }
+    
+    .main-title {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+    }
+    
+    .date {
+        margin-top: 30px;
+    }
+}
